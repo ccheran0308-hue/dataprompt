@@ -1,0 +1,23 @@
+{
+  "overview": "An AI-powered data explorer that lets users upload CSV or JSON files and ask natural language questions to get instant insights, summaries, rankings, and visualizations — no manual analysis needed.",
+  "features": [
+    "Upload CSV or JSON files via drag-and-drop or file picker",
+    "Natural language query input for data exploration",
+    "AI-powered analysis with intent interpretation",
+    "Text summaries for filtered results and rankings",
+    "Bar charts for comparisons and pie charts for distributions",
+    "Query history sidebar for current session",
+    "Data preview showing column names and inferred types",
+    "Loading states, error handling, and empty state guidance"
+  ],
+  "category": "tool",
+  "tags": [
+    "data-explorer",
+    "ai",
+    "csv",
+    "charts",
+    "natural-language",
+    "analytics"
+  ],
+  "last_updated": "2026-04-24T08:38:49.785Z"
+}

@@ -1,0 +1,33 @@
+// Version: 1.0.0
+type ChartData__18776457 = {labels : [Text]; values : [Float]};
+type ChartType__1015768150 = {#bar; #none; #pie};
+type ColumnDefinition__520793496 =
+  {colType : ColumnType__552083982; name : Text};
+type ColumnType__552083982 = {#date; #number; #text};
+type DatasetSchema__266828110 = {columns : [ColumnDefinition__520793496]};
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type QueryRecord__734670467 =
+  {
+    id : Nat;
+    question : Text;
+    result : QueryResult__470361444;
+    timestamp : Int
+  };
+type QueryResult__470361444 =
+  {
+    answer : Text;
+    chartData : ?ChartData__18776457;
+    chartType : ChartType__1015768150
+  };
+actor {
+  stable var _dataRows : Text;
+  stable _history :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?QueryRecord__734670467]];
+      var elementIndex : Nat__490723111
+    };
+  stable var _nextQueryId : Nat;
+  stable var _schema : ?DatasetSchema__266828110
+};

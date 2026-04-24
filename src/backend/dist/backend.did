@@ -1,0 +1,67 @@
+type http_request_result = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type http_header = 
+ record {
+   name: text;
+   value: text;
+ };
+type TransformationOutput = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type TransformationInput = 
+ record {
+   context: blob;
+   response: http_request_result;
+ };
+type QueryResult = 
+ record {
+   answer: text;
+   chartData: opt ChartData;
+   chartType: ChartType;
+ };
+type QueryRecord = 
+ record {
+   id: nat;
+   question: text;
+   result: QueryResult;
+   timestamp: int;
+ };
+type DatasetSchema = record {columns: vec ColumnDefinition;};
+type ColumnType = 
+ variant {
+   date;
+   number;
+   "text";
+ };
+type ColumnDefinition = 
+ record {
+   colType: ColumnType;
+   name: text;
+ };
+type ChartType = 
+ variant {
+   bar;
+   none;
+   pie;
+ };
+type ChartData = 
+ record {
+   labels: vec text;
+   values: vec float64;
+ };
+service : {
+  clearSession: () -> ();
+  getDatasetSchema: () -> (opt DatasetSchema) query;
+  getQueryHistory: () -> (vec QueryRecord) query;
+  queryData: (question: text) -> (QueryResult);
+  setDataRows: (rows: text) -> ();
+  setDatasetSchema: (columns: vec ColumnDefinition) -> ();
+  transform: (input: TransformationInput) -> (TransformationOutput) query;
+}
